@@ -1,0 +1,84 @@
+/* =========================================
+   [index.css] 전체 기본 설정 & 공통 레이아웃
+========================================= */
+body {
+    margin: 0; padding: 0;
+    font-family: 'Malgun Gothic', sans-serif;
+    color: white; background-color: transparent;
+}
+
+.iframe-body {
+    background-color: transparent;
+    display: flex; flex-direction: column;
+    height: 100vh; overflow: hidden;
+}
+
+.bg-video {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    object-fit: cover; z-index: -1; filter: brightness(0.5);
+}
+
+/* 앱 컨테이너 (화면 중앙 게임 창) */
+.app-container {
+    max-width: 1200px; height: 85vh; margin: 5vh auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+    overflow: hidden; display: flex; flex-direction: column;
+}
+
+/* 상단 메뉴바 (Header) */
+.top-bar {
+    flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;
+    background-color: rgba(30, 30, 30, 0.7); height: 80px; border-bottom: 2px solid #ffcc00;
+}
+.logo { display: flex; align-items: center; padding: 0 20px; font-weight: bold; font-size: 22px; }
+.profile-img { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; background-color: #555; }
+
+.main-menu { display: flex; height: 100%; }
+.main-menu a {
+    color: #ccc; text-decoration: none; padding: 0 30px; display: flex;
+    align-items: center; font-weight: bold; font-size: 16px; transition: 0.2s;
+}
+.main-menu a:hover { color: white; background-color: rgba(255, 255, 255, 0.1); }
+.main-menu a.active { background-color: #ffcc00; color: #000; }
+
+.right-menu { padding: 0 20px; font-weight: bold; color: #ffcc00; }
+
+/* 아이프레임 (index.html 전용) */
+.content-area { flex-grow: 1; }
+iframe { width: 100%; height: 100%; border: none; display: block; }
+
+/* =========================================
+   스크롤바 커스텀 (게임 UI 스타일)
+========================================= */
+
+/* 1. 스크롤바 전체 영역 (너비 설정) */
+::-webkit-scrollbar {
+    width: 10px; /* 세로 스크롤바 굵기 */
+    height: 10px; /* 가로 스크롤바 굵기 */
+}
+
+/* 2. 스크롤바가 굴러가는 트랙(배경 길) */
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5); /* 어둡고 반투명한 배경 */
+    border-radius: 5px;
+}
+
+/* 3. 사용자가 잡고 끄는 손잡이(막대) */
+::-webkit-scrollbar-thumb {
+    background: #555; /* 평소에는 눈에 덜 띄는 회색 */
+    border-radius: 5px;
+    border: 2px solid transparent; /* 트랙과 약간의 여백을 주기 위한 투명 테두리 */
+    background-clip: padding-box;
+}
+
+/* 4. 막대에 마우스를 올렸을 때 (Hover) */
+::-webkit-scrollbar-thumb:hover {
+    background: #ffcc00; /* 마우스를 올리면 메인 컬러인 노란색으로 강조! */
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+/* 저작권 고지 (Footer) */
+.site-footer { position: fixed; bottom: 10px; width: 100%; text-align: center; z-index: 10; }
+.site-footer p { margin: 0; font-size: 12px; color: rgba(255, 255, 255, 0.4); line-height: 1.5; }

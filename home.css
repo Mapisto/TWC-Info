@@ -1,0 +1,21 @@
+/* =========================================
+   [home.css] HOME 화면 전용 레이아웃
+========================================= */
+.main-layout {
+    flex-grow: 1; overflow-y: auto; display: flex; gap: 20px;
+    padding: 30px; box-sizing: border-box;
+}
+
+/* 좌측 메인 정보 박스 */
+.main-info-box {
+    flex: 2; padding: 40px; border-radius: 10px;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/info_bg.jpg');
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+
+/* 우측 배너 영역 */
+.banner-container { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+.song-banner {
+    flex: 1; background-color: rgba(50, 50, 50, 0.5); border: 1px solid #777;
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+}
