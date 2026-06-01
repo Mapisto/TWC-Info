@@ -1,0 +1,66 @@
+/* =========================================
+   [gallery.css] 갤러리 화면 전용 스타일
+========================================= */
+
+.gallery-container {
+    padding: 40px;
+    flex-grow: 1;
+    overflow-y: auto; /* 사진이 많아지면 스크롤 생성 */
+    text-align: center;
+}
+
+.gallery-title {
+    color: #fff;
+    font-size: 36px;
+    margin: 0 0 10px 0;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
+
+.gallery-desc {
+    color: #aaa;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+/* ★ 핵심: 사진이 모여있는 격자 레이아웃 (Grid) */
+.gallery-grid {
+    display: grid;
+    /* 화면 너비에 맞춰서 한 줄에 들어가는 사진 개수가 알아서 조절됨! */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 개별 사진 박스 */
+.gallery-item {
+    background-color: #222;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9; /* 가로로 긴 직사각형 비율 고정 */
+    position: relative;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease; /* 마우스 올렸을 때 부드러운 애니메이션 */
+}
+
+/* 마우스 올렸을 때 효과 */
+.gallery-item:hover {
+    border-color: #ffcc00; /* 노란색 테두리 */
+    transform: translateY(-5px); /* 위로 살짝 튀어오름 */
+    box-shadow: 0 10px 20px rgba(255, 204, 0, 0.2); /* 은은한 네온 그림자 */
+}
+
+/* 사진 이미지를 박스 안에 꽉 채우기 */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 비율이 안 맞아도 박스에 꽉 차게 잘라줌 */
+    transition: transform 0.5s ease;
+}
+
+/* 마우스 올렸을 때 사진만 살짝 확대되는 디테일 */
+.gallery-item:hover img {
+    transform: scale(1.1);
+}

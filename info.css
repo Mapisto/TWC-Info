@@ -1,0 +1,113 @@
+/* =========================================
+   [info.css] INFO 화면 전용 스타일 (게임 소개 버전)
+========================================= */
+
+.info-container {
+    padding: 40px;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-width: 1000px; /* 읽기 편하게 너비 살짝 줄임 */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* 섹션 간격 넓힘 */
+}
+
+/* 섹션 1: 게임 개요 */
+.intro-box {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.game-title {
+    font-size: 45px;
+    color: #fff;
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+}
+
+.game-subtitle {
+    font-size: 20px;
+    color: #ffcc00;
+    margin: 15px 0 0 0;
+}
+
+.divider {
+    width: 80px;
+    height: 4px;
+    background-color: #ffcc00;
+    margin: 30px auto;
+    border-radius: 2px;
+}
+
+.game-text {
+    font-size: 17px;
+    color: #ddd;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 섹션 2: 게임 특징 (카드) */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: #1e1e1e;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: #ffcc00;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.feature-icon {
+    font-size: 40px;
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+.feature-label {
+    font-size: 22px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.feature-desc {
+    font-size: 15px;
+    color: #aaa;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 섹션 3: 웹사이트 목적 (아카이빙) */
+.purpose-box {
+    background-color: rgba(255, 204, 0, 0.05); /* 노란색 톤 배경 */
+    border-left: 5px solid #ffcc00;
+    padding: 30px 40px;
+    border-radius: 0 15px 15px 0;
+}
+
+.purpose-title {
+    color: #ffcc00;
+    font-size: 20px;
+    margin: 0 0 15px 0;
+}
+
+.purpose-text {
+    color: #bbb;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+}

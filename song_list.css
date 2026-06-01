@@ -1,182 +1,96 @@
-.song-list-content { flex-grow: 1; overflow-y: auto; padding: 20px; }
+/* =========================================
+   [song_list.css] 곡 목록 화면 전용 스타일
+========================================= */
 
-input[name="pkg-filter"] { display: none; }
-
-/* 필터 탭 */
-.sort-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
-.sort-tabs label.tab {
-    cursor: pointer; padding: 8px 15px; background-color: rgba(50, 50, 50, 0.7);
-    color: #ccc; border-radius: 5px; font-size: 14px; transition: 0.2s;
+.song-list-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
 }
-.sort-tabs label.tab:hover { background-color: rgba(80, 80, 80, 0.9); }
-.tab-divider { color: #555; font-size: 14px; user-select: none; }
 
-.tab-break { flex-basis: 100%; height: 0; margin: 0; }
-
+/* ---------------------------------
+   곡 목록 리스트 컨테이너
+--------------------------------- */
 .list-container {
-    display: flex; flex-direction: column; background-color: rgba(30, 30, 30, 0.85);
-    border-radius: 10px; border: 1px solid #555;
+    display: flex; 
+    flex-direction: column; 
+    background-color: rgba(30, 30, 30, 0.85);
+    border-radius: 10px; 
+    border: 1px solid #555;
 }
 
-.song-item { display: flex; align-items: center; padding: 10px 20px; border-bottom: 1px solid #444; transition: 0.2s; }
-.song-item:hover { background-color: rgba(255, 255, 255, 0.1); }
-.song-item:last-child { border-bottom: none; }
-.song-item .jacket { width: 80px; height: 80px; object-fit: cover; margin-right: 20px; border-radius: 5px; }
-.song-item .title { flex: 1; font-size: 18px; font-weight: bold; color: white; }
-.song-item .composer { flex: 1; text-align: center; font-size: 14px; color: #aaa; }
-.star-label { cursor: pointer; margin-right: 20px; font-size: 24px; color: #555; display: flex; align-items: center; }
-.star-label input { display: none; }
-.star-label input:checked + .star { color: #ffcc00; }
-.song-item .info-btn {
-    background-color: #ffcc00; color: #000; text-decoration: none; padding: 10px 20px;
-    border-radius: 5px; font-weight: bold; font-size: 16px; min-width: 100px; text-align: center;
+/* 개별 곡 아이템 디자인 */
+.song-item { 
+    display: flex; 
+    align-items: center; 
+    padding: 10px 20px; 
+    border-bottom: 1px solid #444; 
+    transition: 0.2s; 
 }
-.song-item .info-btn:hover { background-color: #ffdd44; }
 
-/*패키지 필터링 (대규모 최적화 & 유무료 통합)(AI 도움받음) */
+.song-item:hover { 
+    background-color: rgba(255, 255, 255, 0.1); 
+}
 
-.list-container .song-item { 
+.song-item:last-child { 
+    border-bottom: none; 
+}
+
+/* 앨범 자켓 이미지 */
+.song-item .jacket { 
+    width: 80px; 
+    height: 80px; 
+    object-fit: cover; 
+    margin-right: 20px; 
+    border-radius: 5px; 
+}
+
+/* 곡 제목 및 작곡가 */
+.song-item .title { 
+    flex: 1; 
+    font-size: 18px; 
+    font-weight: bold; 
+    color: white; 
+}
+
+.song-item .composer { 
+    flex: 1; 
+    text-align: center; 
+    font-size: 14px; 
+    color: #aaa; 
+}
+
+/* ★ 즐겨찾기 별표 체크박스 (이건 안전한 CSS라 그대로 유지!) */
+.star-label { 
+    cursor: pointer; 
+    margin-right: 20px; 
+    font-size: 24px; 
+    color: #555; 
+    display: flex; 
+    align-items: center; 
+}
+
+.star-label input { 
     display: none; 
 }
 
-/* 2. ALL 버튼이 눌리면 모든 곡을 보여줌 */
-#filter-all:checked ~ .list-container .song-item { 
-    display: flex; 
+.star-label input:checked + .star { 
+    color: #ffcc00; 
 }
 
-/* 3.무료곡 / 유료곡 필터링 */
-#filter-free:checked ~ .list-container .is-free { display: flex; }
-#filter-paid:checked ~ .list-container .is-paid { display: flex; }
-
-/* 4. 개별 카테고리 및 패키지 필터링 */
-#filter-base:checked ~ .list-container .pkg-base,
-#filter-gp:checked ~ .list-container .pkg-gp,
-#filter-mp:checked ~ .list-container .pkg-mp,
-#filter-piece:checked ~ .list-container .pkg-piece,
-#filter-single:checked ~ .list-container .pkg-single,
-#filter-classical:checked ~ .list-container .pkg-classical,
-#filter-hardcore1:checked ~ .list-container .pkg-hardcore1,
-#filter-hardcore2:checked ~ .list-container .pkg-hardcore2,
-#filter-starter:checked ~ .list-container .pkg-starter,
-#filter-stepup:checked ~ .list-container .pkg-stepup,
-#filter-3rdcoast:checked ~ .list-container .pkg-3rdcoast,
-#filter-tsukasa:checked ~ .list-container .pkg-tsukasa,
-#filter-night:checked ~ .list-container .pkg-night,
-#filter-cineraria:checked ~ .list-container .pkg-cineraria,
-#filter-airwater:checked ~ .list-container .pkg-airwater,
-#filter-lovehate:checked ~ .list-container .pkg-lovehate,
-#filter-codename:checked ~ .list-container .pkg-codename,
-#filter-vivid:checked ~ .list-container .pkg-vivid,
-#filter-jazz:checked ~ .list-container .pkg-jazz,
-#filter-pop:checked ~ .list-container .pkg-pop,
-#filter-tech1:checked ~ .list-container .pkg-tech1,
-#filter-tech2:checked ~ .list-container .pkg-tech2,
-#filter-glory:checked ~ .list-container .pkg-glory,
-#filter-muca:checked ~ .list-container .pkg-muca,
-#filter-mellow:checked ~ .list-container .pkg-mellow,
-#filter-hardcore3:checked ~ .list-container .pkg-hardcore3,
-#filter-chemical:checked ~ .list-container .pkg-chemical,
-#filter-emotion1:checked ~ .list-container .pkg-emotion1,
-#filter-rgbyk:checked ~ .list-container .pkg-rgbyk,
-#filter-o2jam1:checked ~ .list-container .pkg-o2jam1,
-#filter-o2jam2:checked ~ .list-container .pkg-o2jam2,
-#filter-lovely:checked ~ .list-container .pkg-lovely,
-#filter-emotion2:checked ~ .list-container .pkg-emotion2,
-#filter-hardcore4:checked ~ .list-container .pkg-hardcore4,
-#filter-voyage:checked ~ .list-container .pkg-voyage,
-#filter-never:checked ~ .list-container .pkg-never,
-#filter-headliner:checked ~ .list-container .pkg-headliner,
-#filter-o2jam3:checked ~ .list-container .pkg-o2jam3,
-#filter-emotion3:checked ~ .list-container .pkg-emotion3,
-#filter-sunshine:checked ~ .list-container .pkg-sunshine,
-#filter-respect1:checked ~ .list-container .pkg-respect1,
-#filter-andromeda:checked ~ .list-container .pkg-andromeda,
-#filter-piano:checked ~ .list-container .pkg-piano,
-#filter-abcde:checked ~ .list-container .pkg-abcde,
-#filter-masterpiece:checked ~ .list-container .pkg-masterpiece,
-#filter-daylight:checked ~ .list-container .pkg-daylight,
-#filter-redline:checked ~ .list-container .pkg-redline,
-#filter-respect2:checked ~ .list-container .pkg-respect2,
-#filter-fav:checked ~ .list-container .pkg-fav { 
-    display: flex; 
+/* 상세정보 보기 버튼 */
+.song-item .info-btn {
+    background-color: #ffcc00; 
+    color: #000; 
+    text-decoration: none; 
+    padding: 10px 20px;
+    border-radius: 5px; 
+    font-weight: bold; 
+    font-size: 16px; 
+    min-width: 100px; 
+    text-align: center;
 }
 
-/* 5. 선택된 탭 노란색 강조 효과 (기존 코드 유지) */
-#filter-all:checked ~ .sort-tabs label[for="filter-all"],
-#filter-free:checked ~ .sort-tabs label[for="filter-free"],
-#filter-paid:checked ~ .sort-tabs label[for="filter-paid"],
-#filter-base:checked ~ .sort-tabs label[for="filter-base"],
-#filter-gp:checked ~ .sort-tabs label[for="filter-gp"],
-#filter-mp:checked ~ .sort-tabs label[for="filter-mp"],
-#filter-piece:checked ~ .sort-tabs label[for="filter-piece"],
-#filter-single:checked ~ .sort-tabs label[for="filter-single"],
-#filter-classical:checked ~ .sort-tabs label[for="filter-classical"],
-#filter-hardcore1:checked ~ .sort-tabs label[for="filter-hardcore1"],
-#filter-hardcore2:checked ~ .sort-tabs label[for="filter-hardcore2"],
-#filter-starter:checked ~ .sort-tabs label[for="filter-starter"],
-#filter-stepup:checked ~ .sort-tabs label[for="filter-stepup"],
-#filter-3rdcoast:checked ~ .sort-tabs label[for="filter-3rdcoast"],
-#filter-tsukasa:checked ~ .sort-tabs label[for="filter-tsukasa"],
-#filter-night:checked ~ .sort-tabs label[for="filter-night"],
-#filter-cineraria:checked ~ .sort-tabs label[for="filter-cineraria"],
-#filter-airwater:checked ~ .sort-tabs label[for="filter-airwater"],
-#filter-lovehate:checked ~ .sort-tabs label[for="filter-lovehate"],
-#filter-codename:checked ~ .sort-tabs label[for="filter-codename"],
-#filter-vivid:checked ~ .sort-tabs label[for="filter-vivid"],
-#filter-jazz:checked ~ .sort-tabs label[for="filter-jazz"],
-#filter-pop:checked ~ .sort-tabs label[for="filter-pop"],
-#filter-tech1:checked ~ .sort-tabs label[for="filter-tech1"],
-#filter-tech2:checked ~ .sort-tabs label[for="filter-tech2"],
-#filter-glory:checked ~ .sort-tabs label[for="filter-glory"],
-#filter-muca:checked ~ .sort-tabs label[for="filter-muca"],
-#filter-mellow:checked ~ .sort-tabs label[for="filter-mellow"],
-#filter-hardcore3:checked ~ .sort-tabs label[for="filter-hardcore3"],
-#filter-chemical:checked ~ .sort-tabs label[for="filter-chemical"],
-#filter-emotion1:checked ~ .sort-tabs label[for="filter-emotion1"],
-#filter-rgbyk:checked ~ .sort-tabs label[for="filter-rgbyk"],
-#filter-o2jam1:checked ~ .sort-tabs label[for="filter-o2jam1"],
-#filter-o2jam2:checked ~ .sort-tabs label[for="filter-o2jam2"],
-#filter-lovely:checked ~ .sort-tabs label[for="filter-lovely"],
-#filter-emotion2:checked ~ .sort-tabs label[for="filter-emotion2"],
-#filter-hardcore4:checked ~ .sort-tabs label[for="filter-hardcore4"],
-#filter-voyage:checked ~ .sort-tabs label[for="filter-voyage"],
-#filter-never:checked ~ .sort-tabs label[for="filter-never"],
-#filter-headliner:checked ~ .sort-tabs label[for="filter-headliner"],
-#filter-o2jam3:checked ~ .sort-tabs label[for="filter-o2jam3"],
-#filter-emotion3:checked ~ .sort-tabs label[for="filter-emotion3"],
-#filter-sunshine:checked ~ .sort-tabs label[for="filter-sunshine"],
-#filter-respect1:checked ~ .sort-tabs label[for="filter-respect1"],
-#filter-andromeda:checked ~ .sort-tabs label[for="filter-andromeda"],
-#filter-piano:checked ~ .sort-tabs label[for="filter-piano"],
-#filter-abcde:checked ~ .sort-tabs label[for="filter-abcde"],
-#filter-masterpiece:checked ~ .sort-tabs label[for="filter-masterpiece"],
-#filter-daylight:checked ~ .sort-tabs label[for="filter-daylight"],
-#filter-redline:checked ~ .sort-tabs label[for="filter-redline"],
-#filter-respect2:checked ~ .sort-tabs label[for="filter-respect2"],
-#filter-fav:checked ~ .sort-tabs label[for="filter-fav"] {
-    background-color: #ffcc00; color: #000; font-weight: bold;
-}
-/* 패키지 목록 열고 닫기 (체크박스 이용)(AI 도움받음) */
-
-#package-toggle { display: none; }
-
-.toggle-btn {
-    background-color: #222 !important; 
-    color: #ffcc00 !important; 
-    border: 1px solid #ffcc00;
-}
-.toggle-btn:hover { background-color: #444 !important; }
-
-.package-list-box {
-    display: none;
-    width: 100%;
-    gap: 10px; 
-    flex-wrap: wrap; 
-    margin-top: 10px;
-    padding-top: 15px; 
-    border-top: 1px dashed #777;
-}
-
-#package-toggle:checked ~ .package-list-box {
-    display: flex;
+.song-item .info-btn:hover {
+    background-color: #ffdd44;
 }
